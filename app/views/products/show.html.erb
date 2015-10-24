@@ -24,3 +24,11 @@
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
 
+
+<% @review.each do |review| %>
+<hr>
+ <h4> <%=review.content%></h4>
+ <%= time_ago_in_words review.created_at %>
+ 
+<% end  %>
+
