@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
  
-  before_save :deafult_role
+  before_save :default_role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,11 +8,13 @@ class User < ActiveRecord::Base
   
   enum role: [:admin, :client, :guest]
   validates :nickname, uniqueness: true
-
+  #dependencias de productos y review
   has_many :products, :dependent => :destroy
   has_many :reviews, :dependent => :destroy
-
-  def deafult_role
-  	self.role ||= 2  	
+  #relacion n a n
+  has_many :likes
+  has_many :product_likes, through: :likes, source: :product
+  def default_role
+  	self.role ||= 1	
   end
 end
