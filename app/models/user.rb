@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   enum role: [:admin, :client, :guest]
   validates :nickname, uniqueness: true
 
+  has_many :products, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
+
 end
