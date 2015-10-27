@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @review = @product.reviews.reverse
+    
   end
 
   # GET /products/new
@@ -53,7 +54,7 @@ class ProductsController < ApplicationController
   end
   def uplike
     @product = Product.find(params[:id])
-    @like = Like.new(product:@product, user:@current_user)
+    @like = @product.likes.build(user:@current_user)
     if @product.user_likes.include? current_user
       @product.likes.where(user:current_user).first.delete
       redirect_to @post, notice: "Tu like ha sido borrado"

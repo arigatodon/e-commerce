@@ -25,10 +25,21 @@
 <%= link_to 'Back', products_path %>
 
 
+<h3>que te ah parecido este producto</h3>
+<div >
+  <%= form_for [@product, Review.new] do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.submit "enviar" %>
+    <% end %>
+  </div>
+
 <% @review.each do |review| %>
 <hr>
  <h4> <%=review.content%></h4>
+ <%= link_to "+1", product_review_uplike_path(review.product, review) %>
  <%= time_ago_in_words review.created_at %>
+
  
 <% end  %>
 

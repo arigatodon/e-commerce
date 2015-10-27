@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :products do
-    resources :comments, only: [:created]
+    resources :reviews, only: [:create] do
+      get 'uplike'
+    end
+    
     member do
       get 'uplike'
     end
