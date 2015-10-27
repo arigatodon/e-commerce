@@ -12,8 +12,9 @@ class User < ActiveRecord::Base
   has_many :products, :dependent => :destroy
   has_many :reviews, :dependent => :destroy
   #relacion n a n
-  has_many :likes
+  has_many :likes, as: :likeable
   has_many :product_likes, through: :likes, source: :product
+  has_many :review_likes, through: :likes, source: :review
   def default_role
   	self.role ||= 1	
   end

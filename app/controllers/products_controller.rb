@@ -51,7 +51,18 @@ class ProductsController < ApplicationController
       end
     end
   end
-
+  def uplike
+    @product = Product.find(params[:id])
+    @like = Like.new(product:@product, user:@current_user)
+    if @product.user_likes.include? current_user
+      @product.likes.where(user:current_user).first.delete
+      redirect_to @post, notice: "Tu like ha sido borrado"
+    elsif @like.save
+      redirect_to @product, notice: "le has dado like"
+    else
+      redirect_to @product, notice: "No puedes realizar like traidor"
+    end
+  end
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy

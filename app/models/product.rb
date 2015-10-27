@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
 	  has_many :reviews	, dependent: :destroy
 	  has_many :users
 	  has_many :user_likes, through: :likes, :source => :user
+	  has_many :likes, as: :likeable
 
 	  #validates :name, presence: true
   	  validates :description, presence: true
