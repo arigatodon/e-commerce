@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
   has_many :likes, as: :likeable
   has_many :product_likes, through: :likes, source: :product
   has_many :review_likes, through: :likes, source: :review
+ ##ultima modificacion----------
+ has_many :product_likes, through: :likes, source: :likeable, source_type: 'Product'
+ has_many :review_likes, through: :likes, source: :likeable, source_type: 'Review'
+
   def default_role
   	self.role ||= 1	
   end
