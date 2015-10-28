@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @categories = Category.all
   end
 
   # GET /products/1
@@ -52,6 +53,7 @@ class ProductsController < ApplicationController
       end
     end
   end
+
   def uplike
     @product = Product.find(params[:id])
     @like = @product.likes.build(user:@current_user)
@@ -73,6 +75,22 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def set_categories
+    if params.key?(:categories_ids) && !params[:categories_ids].empty? && params.key?(:products_ids) && !params[:products_ids].empty?
+      @products = Product.find(params[:movies_ids])
+      @categories = Category.find(params[:categories_ids])
+      @products.each do |product|
+        product.categories = @categories
+      end
+      redirect_to root_path, notice: 'Categoria(s) asignado correctamente.'
+    else
+      redirect_to root_path, alert: 'Tienes que seleccionar al menos una categoria y un producto'
+    end
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

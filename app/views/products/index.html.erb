@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<%= form_tag set_categories_products_path do %>
+  <%= select_tag 'categories_ids[]', options_from_collection_for_select(@categories, 'id', 'name'), prompt: 
+  "Seleciona el/los generos", multiple: true %>
+
+  <%= submit_tag "Guardar" %>
+<%end %>
+
+
 <h1>Listing Products</h1>
 
 <table>

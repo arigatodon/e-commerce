@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+categories = []
+Category.create(name: 'ecologico')
+Category.create(name: 'cocina')
+Category.create(name: 'tecnologia')
+Category.create(name: 'diy')
+Category.create(name: 'mueble')
+Category.create(name: 'decoracion')
+Category.create(name: 'eficiencia')
+Category.create(name: 'local')
+Category.create(name: 'comestible')
