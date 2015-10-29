@@ -27,12 +27,13 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td><%= check_box_tag 'products_ids[]', product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td></td>
         <td><%= product.stock %></td>
-         <td><%= image_tag product.image, width:'100px'  %></td>
+         <td><%= image_tag product.image.thumb , width:'100px'  %></td>
         <td><%= link_to "(#{product.likes.count}) +1", uplike_product_path(product) %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>

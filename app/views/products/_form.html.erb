@@ -28,11 +28,17 @@
     <%= f.number_field :stock %>
   </div>
   <div class="field">
-   <%= image_tag @product.image if @product.image?%>
+   <%= image_tag @product.image %>
     <%= f.label :image %><br>
     <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+    <%= f.hidden_field :image_cache %> 
+  <p>
+    <label>
+      <%= f.check_box :remove_image %> remove
+    </label>
+  </p>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
