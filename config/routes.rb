@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   #carro
   get '/carro' => "carts#index"
-  get 'limpiarcarro' => 'carts#clearCart'
+  get 'limpiarcarro', to: 'carts#clearCart'
   get '/carro/:id' => 'carts#add'
   
   get 'reviews/create'
