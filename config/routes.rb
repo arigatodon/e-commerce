@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
-  get 'reviews/create'
+  
+  
 
   devise_for :users
+
+  #carro
+  get '/carro' => "carts#index"
+  get 'limpiarcarro' => 'carts#clearCart'
+  get '/carro/:id' => 'carts#add'
+  
+  get 'reviews/create'
 
   resources :products do
     resources :reviews, only: [:create] do
