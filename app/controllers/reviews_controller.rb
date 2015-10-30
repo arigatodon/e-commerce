@@ -22,8 +22,8 @@ class ReviewsController < ApplicationController
       redirect_to @product, notice: "le has dado like"
     else
       redirect_to @product, notice: "No puedes realizar like traidor"
-    end
-  end
+     end
+   end
   # DEL
   private
 

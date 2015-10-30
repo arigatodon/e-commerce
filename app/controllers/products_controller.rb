@@ -55,6 +55,17 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  # DELETE /products/1
+  # DELETE /products/1.json
+  def destroy
+    @product.destroy
+    respond_to do |format|
+      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   def uplike
     @product = Product.find(params[:id])
     @like = @product.likes.build(user:@current_user)
@@ -67,20 +78,10 @@ class ProductsController < ApplicationController
       redirect_to @product, notice: "No puedes realizar like traidor"
     end
   end
-  # DELETE /products/1
-  # DELETE /products/1.json
-  def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
 
   def set_categories
     if params.key?(:categories_ids) && !params[:categories_ids].empty? && params.key?(:products_ids) && !params[:products_ids].empty?
-      @products = Product.find(params[:movies_ids])
+      @products = Product.find(params[:products_ids])
       @categories = Category.find(params[:categories_ids])
       @products.each do |product|
         product.categories = @categories

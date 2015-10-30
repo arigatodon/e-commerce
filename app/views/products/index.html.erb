@@ -36,8 +36,12 @@
          <td><%= image_tag product.image.thumb , width:'100px'  %></td>
         <td><%= link_to "(#{product.likes.count}) +1", uplike_product_path(product) %></td>
         <td><%= link_to 'Show', product %></td>
+          <% if can? :edit, product %>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <% end %>
+          <% if can? :destroy, product %>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end  %>
       </tr>
     <% end %>
   </tbody>
