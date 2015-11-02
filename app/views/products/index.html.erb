@@ -1,11 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<%= form_tag set_categories_products_path do %>
-  <%= select_tag 'categories_ids[]', options_from_collection_for_select(@categories, 'id', 'name'), prompt: 
-  "Seleciona el/los generos", multiple: true %>
-
-  <%= submit_tag "Guardar" %>
-<%end %>
+<% if can? :edit, product  %>
+ <%= render 'category' %>
+  <%end %>
 
 
 <h1>Listing Products</h1>
@@ -27,7 +23,9 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+          <% if can? :edit, product %>
         <td><%= check_box_tag 'products_ids[]', product.id %></td>
+         <% end %>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
@@ -42,7 +40,9 @@
           <% if can? :destroy, product %>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
          <% end  %>
+          <% if can? :add, product %>
         <td> <a href="/carro/<%= product.id %>">Agregar al carro </a> </td>
+          <% end %>
          
       </tr>
     <% end %>

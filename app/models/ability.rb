@@ -7,13 +7,16 @@ class Ability
        user ||= User.new(role: 1) # guest user (not logged in)
        if user.admin?
         can :manage, :all
-      elsif user.client?
+          elsif user.client?
          can :read, :all
          can :create, [Product, Review]
          can :like, [Product, Review]
-      else
+         can :uplike, [Product, Review]
+         can :add , :cart
+         can :clearCart, :cart
+          else
         can :read, :all
-      end
+       end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
