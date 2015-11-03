@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
- 
+=begin
+  after_create :send_welcome_email
+=end
   before_save :default_role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -7,6 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   enum role: [:admin, :client, :guest]
+
   validates :nickname, uniqueness: true
   #dependencias de productos y review
   has_many :products, :dependent => :destroy
@@ -18,7 +21,14 @@ class User < ActiveRecord::Base
  ##ultima modificacion----------
  has_many :product_likes, through: :likes, source: :likeable, source_type: 'Product'
  has_many :review_likes, through: :likes, source: :likeable, source_type: 'Review'
+=begin
+  
 
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_now #envia un email con active_job en un rato / deliver_now envia un mail inmediatamente
+  end
+=end
   def default_role
   	self.role ||= 1	
   end

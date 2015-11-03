@@ -1,6 +1,6 @@
 class AddDefaultRoleToUser < ActiveRecord::Migration
   def up
-  	change_column :users, :role, :integer, default: 1, null: false
+  	change_column :users, :role, :integer, default: 1
   end
 
   def down
