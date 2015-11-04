@@ -26,7 +26,7 @@ default_scope { order(:role, :id) }
 
  def default_role
     self.role ||= 1 
-  end
+ end
 
 =begin
   
