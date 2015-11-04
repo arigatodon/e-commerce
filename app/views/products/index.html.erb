@@ -41,7 +41,7 @@
           <% if can? :destroy, product %>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
          <% end  %>
-          <% if can? :read, product %>
+          <% if can? :add, product %>
         <td> <a href="/carro/<%= product.id %>">Agregar al carro </a> </td>
           <% end %>
          

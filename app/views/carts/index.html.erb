@@ -1,10 +1,5 @@
 <h1>Carrito bonito</h1>
 
-	<%if @cart.empty? %>
-	 	<p>Su carro esta vacio</p>
-	<% else %>
- 		<%= link_to 'Vaciar el carro', limpiarcarro_path %>
- 	<% end %>
 <ul>
 <br><br><br>
 <% total = 0 %>
@@ -23,3 +18,10 @@
 <p><b>Total : <%= number_to_currency(total, precision: 3)  %></b></p>
 
 </ul>
+<br><br>
+
+	<%if @cart.empty? %>
+	 	<p>Su carro esta vacio</p>
+	<% else %>
+ 		<%= link_to 'Vaciar el carro', limpiarcarro_path %>
+ 	<% end %>

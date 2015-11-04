@@ -21,6 +21,13 @@ class User < ActiveRecord::Base
  ##ultima modificacion----------
  has_many :product_likes, through: :likes, source: :likeable, source_type: 'Product'
  has_many :review_likes, through: :likes, source: :likeable, source_type: 'Review'
+
+default_scope { order(:role, :id) }
+
+ def default_role
+    self.role ||= 1 
+  end
+
 =begin
   
 
@@ -29,7 +36,5 @@ class User < ActiveRecord::Base
     UserMailer.welcome_email(self).deliver_now #envia un email con active_job en un rato / deliver_now envia un mail inmediatamente
   end
 =end
-  def default_role
-  	self.role ||= 1	
-  end
+ 
 end
