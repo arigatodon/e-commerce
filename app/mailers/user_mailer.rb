@@ -1,7 +1,6 @@
 class UserMailer < ApplicationMailer
+	default from: 'notifactions@example.com'
 
-
-=begin
 	def welcome_email user
 		@user = user
 		@url = 'www.tienda.com'
@@ -10,7 +9,7 @@ class UserMailer < ApplicationMailer
 			to: @user.email,
 			subject: 'Bienvenido a la tienda',
 			template_path: 'user_mailer',#opcionales
-			template_name: 'welcome')
+			template_name: 'welcome_email')
 	end
-=end
+
 end

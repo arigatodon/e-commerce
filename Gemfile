@@ -10,6 +10,8 @@ gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'carrierwave'
+#gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre2'
 
 gem 'dotenv-rails', groups: [:development,:test]
 # Use SCSS for stylesheets

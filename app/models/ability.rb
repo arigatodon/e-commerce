@@ -9,7 +9,7 @@ class Ability
         can :manage, :all
           elsif user.client?
          can :read, :all
-         can :create, [Product, Review]
+         can :create, [Product, Review] # , user_id: user.id
          can :like, [Product, Review]
          can :uplike, [Product, Review]
          can :add , :cart

@@ -12,17 +12,18 @@ Product.destroy_all
 User.destroy_all
 Category.destroy_all
 Review.destroy_all
+AdminUser.destroy_all
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
 
 
 
-admin = User.create(
+ admin = User.create(
   name: 'Igor venegas',
   lastname: 'venegas',
   nickname: 'igor',
   email: 'admin@ecommerce.com',
   password: 'password',
-  role: 0
-)
+  role: 0)
 
 users = []
 
@@ -69,7 +70,8 @@ review = []
 (1..500).each do |r|
 	review << Review.create(
 	content: Faker::Lorem.paragraph(3),
-	product: product[rand(product.length)]	)
+	product: products[rand(products.length)]
+	)
 end
 
 5.times do |i|
@@ -102,3 +104,4 @@ order.save
   po.quantity = Faker::Number.between(1, 10)
   po.save
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
