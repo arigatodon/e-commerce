@@ -13,7 +13,7 @@ gem 'carrierwave'
 #gem 'activeadmin', github: 'activeadmin'
 gem 'activeadmin', '~> 1.0.0.pre2'
 
-gem 'dotenv-rails', groups: [:development,:test]
+gem 'dotenv-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
